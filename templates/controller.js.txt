@@ -1,0 +1,31 @@
+var app = angular.module('mainApp', []);
+
+app.controller('example1', function ($scope, $http) {
+	$http.get ("http://localhost/accessrequest/api/v1/example1")
+	.then(function (response) {
+		console.log(response.data);
+	    $scope.persons = response.data;
+	})
+})
+
+       <!-- var request = {
+	                method: 'get',
+	                url: 'https://www.encodedna.com/angularjs/tutorial/birds.json',
+	                dataType: 'json',
+	                contentType: "application/json"
+	            };
+	
+	            $scope.arrBirds = new Array;
+	
+	            $http(request)
+	                .success(function (jsonData) {
+	                    $scope.arrBirds = jsonData;
+	                    $scope.list = $scope.arrBirds;
+	                })
+	                .error(function () {
+	
+	                });
+	        });-->
+	        	
+	        	
+	        

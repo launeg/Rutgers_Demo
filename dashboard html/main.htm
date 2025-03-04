@@ -1,0 +1,565 @@
+<!--
+<div class="row">
+    <div class="col-md-12">
+        <h1>Test</h1>
+        
+        <table class="table table-bordered">
+        	<tbody>
+        		<tr>
+        			<th>ID</th>
+        			<th>Name</th>
+        			<th>Address</th>
+        		</tr>
+        		<tr ng-repeat="user in data">
+        			<td>{{user.id}}</td>
+        			<td>{{user.name}}</td>
+        			<td>{{user.address}}</td>
+        		</tr>
+        	</tbody>
+        </table>
+        
+        {{data[2].name}}
+    </div>
+</div>
+-->
+
+<!--  the rest of laura's code here vvvv -->
+<!DOCTYPE html>
+<html lang="en-US">
+<!--HEAD******************************************************************************** -->
+
+
+
+<head>
+  <link type="text/css" href="../css/main.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <meta charset="utf-8">
+
+  <title> SASN IT ACCESS REQUEST FORM LIST</title>
+</head>
+
+
+<!--This is to add the Angular  -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<!--BODY********************************************************************************-->
+
+<body>
+  <header>
+    <div class="navbar">
+      <img src="../images/logo.png" alt="Rutgers Logo" class="image1"></img>
+      <img src="../images/sprite_backgrounds.png" alt="Back Drop" class="image2"></img>
+    </div>
+  </header>
+
+
+  <div class="form-container">
+
+    <!--This is to add the Angular   
+      <div ng-app="">
+        <p>Name: <input type="text" ng-model="name"></p>
+        <p ng-bind="name"></p>
+      </div>
+      -->
+    <!--<h1>SASN IT ACCESS REQUEST FORM LIST</h1>-->
+
+
+    <!--Search B-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <ul class="tabs">
+      <li data-tab-target="#submission" class="active tab">Submitted</li>
+      <li data-tab-target="#pending" class="tab">Pending Approval</li>
+      <div class="search_bar">
+        <input type="text" placeholder="Search" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </ul>
+
+    <div class="tab-content">
+      <div id="submission" data-tab-content class="active">
+        <h1>Your Submissions</h1>
+        <form action="action_page.php">
+
+          <table class="table3"> <!--main idea, use the table info-->
+            <tr>
+              <th>Froms Inprogress</th>
+              <th>Forms Approved</th>
+              <th>Forms Denied</th>
+              <!-- i need to use the info, I need to review this-->
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+          </table>
+          <br>
+
+          <!-- <a href="#" class="previous round">&#8249;</a>
+      <a href="#" class="next round">&#8250;</a> -->
+
+          <br>
+          <div class="drop-down-section">
+            <div class="container">
+              <label for="school-names">Schools</label>
+              <select name=" school-names" id="school-names">
+                <option value=SASN>School of Arts and Sciences-Newark</option>
+                <option value="RBS">Rutgers Business School</option>
+                <option value="Nursing">School of Nursing</option>
+                <option value="SPAA">School of Public Affairs and Administration</option>
+                <option value="SCJ">School of Criminal Justice</option>
+              </select>
+            </div>
+            <div class="container">
+              <label for="it-names">IT System:</label>
+              <select name="it-names" id="it-names">
+                <option value="">START</option>
+                <option value="">GradTracker</option>
+                <option value="">Junior Tracker</option>
+                <option value="">AMS(PTL)</option>
+                <option value="">Faculty Integration</option>
+                <option value="">SASN Website</option>
+                <option value="">Kronos</option>
+              </select>
+            </div>
+            <div class="container">
+              <label for="roles-names">Role</label>
+              <select name="reles-names" id="roles-names">
+                <option value="admin">Admin</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="advisor">Student Adivsor</option>
+                <option value="informational">Informational</option>
+              </select>
+            </div>
+            <div class="container">
+              <label for="act-names">Last Action</label>
+              <select name="act-names" id="act-names">
+                <option value=" "></option>
+                <option value=" "></option>
+                <option value=" "></option>
+                <option value=" "></option>
+              </select>
+            </div>
+          </div>
+
+          <br>
+          <div class="nav_buttons">
+            <a href="#" class="previous">&laquo; Previous</a>
+            <a href="#" class="next">Next &raquo;</a>
+          </div>
+          <div class="table-information">
+            <table class="table2">
+              <tr>
+                <th>Date Sub</th>
+                <th>Date Eff</th>
+                <th>NetID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>IT System</th>
+                <th>Roles</th>
+                <!-- is not just inprocess but, aproved by ..., ast thing thing that the form went throw-->
+                <th>School & Department</th>
+                <th>Supervisor's Name</th>
+                <th>Last Action</th><!-- Date Last Submitted ..-->
+                <th>Last Action's Date </th>
+              </tr>
+
+              <tr>
+                <td>mm-dd-yyyy</td>
+                <td>mm-dd-yyyy</td>
+                <td>lbn25</td>
+                <td>Laura</td>
+                <td>Negrin</td>
+                <td>START</td>
+                <td> </td>
+                <td>SASN - Math Department</td>
+                <td> John Smith</td>
+                <td>Supervisor signed</td>
+                <td>mm-dd-yyyy</td>
+              </tr>
+              <tr>
+                <td>mm-dd-yyyy</td>
+                <td>mm-dd-yyyy</td>
+                <td>kj351</td>
+                <td>Kai</td>
+                <td>Jasey</td>
+                <td>GradTracker</td>
+                <td> </td>
+                <td>SASN - Economy Department</td>
+                <td> John Smith</td>
+                <td>Supervisor signed</td>
+                <td>mm-dd-yyyy</td>
+              </tr>
+              <tr>
+                <td>mm-dd-yyyy</td>
+                <td>mm-dd-yyyy</td>
+                <td>kj351</td>
+                <td>John</td>
+                <td>Smith</td>
+                <td>GradTracker</td>
+                <td> </td>
+                <td>SASN - Economy Department</td>
+                <td> Grace Smith</td>
+                <td> SASN Dean (Name and last name) signed</td>
+                <td>mm-dd-yyyy</td>
+              </tr>
+              <tr>
+                <td>mm-dd-yyyy</td>
+                <td>mm-dd-yyyy</td>
+                <td>bs123</td>
+                <td>Beatriz</td>
+                <td>Septima</td>
+                <td>GradTracker</td>
+                <td> </td>
+                <td>SASN - Economy Department</td>
+                <td> Grace Smith </td>
+                <td> SASN Dean (Name and last name) signed </td>
+                <td>mm-dd-yyyy</td>
+              </tr>
+            </table>
+
+          </div>
+          <script>
+            function myFunction() {
+              var input, filter, table, tr, td, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("myTable");
+              tr = table.getElementsByTagName("tr");
+
+              for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }
+              }
+            }
+          </script>
+          <!--Filter/Search List -->
+          <script>
+            function myFunction2() {
+              // Declare variables
+              var input, filter, ul, li, a, i, txtValue;
+              input = document.getElementById('myInput');
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("myUL");
+              li = ul.getElementsByTagName('li');
+
+              // Loop through all list items, and hide those who don't match the search query
+              for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                }
+              }
+            }
+          </script>
+
+          <div class="nav_buttons">
+            <a href="#" class="previous">&laquo; Previous</a>
+            <a href="#" class="next">Next &raquo;</a>
+          </div>
+          <!-- Is not getting the info from the json file -->
+          <div ng-app="myApp" ng-controller="myController">
+
+
+            <!-- <table>
+              <tr>
+                <th>User ID</th>
+                <th>NetID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Application</th>
+              </tr>
+
+              <tr ng-repeat="test in list">
+                <td>{{test.userID}}</td>
+                <td>{{test.netID}}</td>
+                <td>{{test.firstName}}</td>
+                <td>{{test.lastName}}</td>
+                <td>{{test.phone}}</td>
+                <td>{{test.email}}</td>
+                <td>{{test.application}}</td>
+                <!--  Add the other items -->
+              </tr>
+
+
+            </table> 
+          </div>
+        </form>
+
+      </div>
+      <div id="pending" data-tab-content>
+        <h1>Pending Approval</h1>
+        <form action="proccessForm.php">
+
+          <table class="table3"> <!--main idea, use the table info-->
+            <tr>
+              <th>Froms Inprogress</th>
+              <th>Forms Approved</th>
+              <th>Forms Denied</th>
+              <!-- i need to use the info, I need to review this-->
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+          </table>
+          <br>
+
+          <!-- <a href="#" class="previous round">&#8249;</a>
+      <a href="#" class="next round">&#8250;</a> -->
+
+          <br>
+          <div class="drop-down-section">
+            <div class="container">
+              <label for="school-names">Schools</label>
+              <select name=" school-names" id="school-names">
+                <option value=SASN>School of Arts and Sciences-Newark</option>
+                <option value="RBS">Rutgers Business School</option>
+                <option value="Nursing">School of Nursing</option>
+                <option value="SPAA">School of Public Affairs and Administration</option>
+                <option value="SCJ">School of Criminal Justice</option>
+              </select>
+            </div>
+            <div class="container">
+              <label for="it-names">IT System:</label>
+              <select name="it-names" id="it-names">
+                <option value="">START</option>
+                <option value="">GradTracker</option>
+                <option value="">Junior Tracker</option>
+                <option value="">AMS(PTL)</option>
+                <option value="">Faculty Integration</option>
+                <option value="">SASN Website</option>
+                <option value="">Kronos</option>
+              </select>
+            </div>
+            <div class="container">
+              <label for="roles-names">Role</label>
+              <select name="reles-names" id="roles-names">
+                <option value="admin">Admin</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="advisor">Student Adivsor</option>
+                <option value="informational">Informational</option>
+              </select>
+            </div>
+            <div class="container">
+              <label for="act-names">Last Action</label>
+              <select name="act-names" id="act-names">
+                <option value=" "></option>
+                <option value=" "></option>
+                <option value=" "></option>
+                <option value=" "></option>
+              </select>
+            </div>
+          </div>
+
+          <br>
+          <div class="nav_buttons">
+            <a href="#" class="previous">&laquo; Previous</a>
+            <a href="#" class="next">Next &raquo;</a>
+          </div>
+          <div class="table-information">
+            <table class="table2">
+              <tr>
+                <th>Date Sub</th>
+                <th>Date Eff</th>
+                <th>NetID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>IT System</th>
+                <th>Roles</th>
+                <!-- is not just inprocess but, aproved by ..., ast thing thing that the form went throw-->
+                <th>School & Department</th>
+                <th>Supervisor's Name</th>
+                <th>Last Action</th><!-- Date Last Submitted ..-->
+                <th>Last Action's Date </th>
+              </tr>
+
+              <tr>
+                <td>mm-dd-yyyy</td>
+                <td>mm-dd-yyyy</td>
+                <td>lbn25</td>
+                <td>Laura</td>
+                <td>Negrin</td>
+                <td>START</td>
+                <td> </td>
+                <td>SASN - Math Department</td>
+                <td> John Smith</td>
+                <td>Supervisor signed</td>
+                <td>mm-dd-yyyy</td>
+              </tr>
+              <tr>
+                <td>mm-dd-yyyy</td>
+                <td>mm-dd-yyyy</td>
+                <td>kj351</td>
+                <td>Will</td>
+                <td>Arevalo</td>
+                <td>GradTracker</td>
+                <td> </td>
+                <td>SASN - Economy Department</td>
+                <td> John Smith</td>
+                <td>Supervisor signed</td>
+                <td>mm-dd-yyyy</td>
+              </tr>
+              <tr>
+                <td>mm-dd-yyyy</td>
+                <td>mm-dd-yyyy</td>
+                <td>kj351</td>
+                <td>Brandon</td>
+                <td>Bautista</td>
+                <td>GradTracker</td>
+                <td> </td>
+                <td>SASN - Economy Department</td>
+                <td> Grace Smith</td>
+                <td> SASN Dean (Name and last name) signed</td>
+                <td>mm-dd-yyyy</td>
+              </tr>
+              <tr>
+                <td>mm-dd-yyyy</td>
+                <td>mm-dd-yyyy</td>
+                <td>bs123</td>
+                <td>Mehdi</td>
+                <td>Froogh</td>
+                <td>GradTracker</td>
+                <td> </td>
+                <td>SASN - Economy Department</td>
+                <td> Grace Smith </td>
+                <td> SASN Dean (Name and last name) signed </td>
+                <td>mm-dd-yyyy</td>
+              </tr>
+            </table>
+
+          </div>
+          <script>
+            function myFunction() {
+              var input, filter, table, tr, td, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("myTable");
+              tr = table.getElementsByTagName("tr");
+
+              for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }
+              }
+            }
+          </script>
+          <!--Filter/Search List -->
+          <script>
+            function myFunction2() {
+              // Declare variables
+              var input, filter, ul, li, a, i, txtValue;
+              input = document.getElementById('myInput');
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("myUL");
+              li = ul.getElementsByTagName('li');
+
+              // Loop through all list items, and hide those who don't match the search query
+              for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                }
+              }
+            }
+          </script>
+
+          <div class="nav_buttons">
+            <a href="#" class="previous">&laquo; Previous</a>
+            <a href="#" class="next">Next &raquo;</a>
+          </div>
+          <!-- Is not getting the info from the json file -->
+          <!-- <div ng-app="myApp" ng-controller="myController">
+
+
+            <table>
+              <tr>
+                <th>User ID</th>
+                <th>NetID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Application</th>
+              </tr>
+
+              <tr ng-repeat="test in list">
+                <td>{{test.userID}}</td>
+                <td>{{test.netID}}</td>
+                <td>{{test.firstName}}</td>
+                <td>{{test.lastName}}</td>
+                <td>{{test.phone}}</td>
+                <td>{{test.email}}</td>
+                <td>{{test.application}}</td>
+                <!--  Add the other items -->
+              </tr>
+            </table>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+<!--The Controller-->
+<!-- 
+	<script>
+
+    function myController($scope, $http) {
+        var url = "http://localhost/AccessRequest/templates/test.json";
+        $http.get(url).success(function (response) {
+            $scope.list = response;
+        });
+    }
+	</script>
+	-->
+<script>
+  var app = angular.module('myApp', []);
+  app.controller('myController', function ($scope, $http) {
+
+    var request = {
+      method: 'get',
+      url: 'http://localhost/AccessRequest/templates/test.json',
+    };
+
+    $scope.arrExamples = new Array;
+
+    $http(request)
+      .success(function (data) {
+        $scope.arrExamples = data;
+        $scope.list = $scope.arrExamples;
+      })
+      .error(function () {
+
+      });
+  });
+
+</script>
+<script src="../js/src/tab.js"></script>
+
+</html>

@@ -1,0 +1,611 @@
+<!--<div class="row">
+    <form name="ExForm" class="col-md-12 row" ng-submit="submit($event)">
+        <h1>Test Form</h1>
+        <div class="row">
+	        <div class="col-md-3">Name: </div>
+	        <div class="col-md-9">
+	        	<input type="text" ng-model="ex.name"/>
+	        </div>
+        </div>
+        <div class="col-md-3">Address:</div>
+        <div class="col-md-9">
+        	<input type="text" ng-model="ex.address"/>
+        </div>
+        <div class="row">
+        	<button type="button" ng-click="submit()" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+ -->
+
+<!-- laura and kai's code -->
+<html>
+
+<head>
+
+
+
+	<meta charset="utf-8">
+	<title> SASN FORM </title>
+</head>
+<link type="text/css" href="../css/form.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+<body>
+
+
+	<header>
+		<div class="navbar">
+			<img src="../images/logo.png" alt="Rutgers Logo" class="image1"></img>
+			<img src="../images/sprite_backgrounds.png" alt="Back Drop" class="image2"></img>
+		</div>
+	</header>
+
+
+
+	<div class="form-container">
+		<form>
+			<h1>SASN IT ACCESS REQUEST FORM</h1>
+			<hr>
+			<!-- This is the section is regarding to the user information -->
+			<div class="user-information">
+
+				<h3>USER INFORMATION</h3>
+
+				<div class="input-container">
+					<label>First Name</label>
+					<input type="text" id="firstName"  name="name" required>
+				</div>
+				<div class="input-container">
+					<label>Last Name</label>
+					<input type="text" id="lastName"  name="name" required>
+				</div>
+				<div class="input-container">
+					<label>NetID</label>
+					<input type="text" id="netid"  name="netid" required>
+				</div>
+				<br>
+				<div class="input-container">
+					<label>Title</label>
+					<input type="text" id="title" name="title" required>
+				</div>
+				<div class="input-container">
+					<label>Email</label>
+					<input type="email" id="email" name="email" required>
+				</div>
+				<div class="input-container">
+					<label>Eff Date</label>
+					<input type="date" id="effdate"  name="effdate" required>
+				</div>
+				<br>
+
+				<div class="drop-container">
+					<label>School</label>
+					<td>
+						<select type="text" name="School" id="school">
+							<option value="SASN">School of Arts and Sciences - Newark</option>
+							<option value="RBS">Rutgers Business School</option>
+							<option value="Nursing">School of Nursing</option>
+							<option value="SPAA">School of Public Affairs and Administration</option>
+							<option value="SCJ">School of Criminal Justice</option>
+						</select>
+					</td>
+				</div>
+
+				<div class="drop-container">
+					<label>Department</label>
+					<td>
+						<select type="text" name="Department" id="department"><!-- I need a list of all Department // add borders-->
+							<option value="AAAS">Department of Africana Studies</option>
+							<option value="ACM (Applied Music)">Department of Arts, Culture and Media - Applied Music</option>
+							<option value="ACM (Art History)">Department of Arts, Culture and Media - Art History</option>
+							<option value="ACM (Arts)">Department of Arts, Culture and Media - Arts</option>
+							<option value="ACM (Core)">Department of Arts, Culture and Media - Core</option>
+							<option value="ACM (Graphic Design)">Department of Arts, Culture and Media - Graphic Design</option>
+							<option value="ACM (Journalism)">Department of Arts, Culture and Media - Journalism</option>
+							<option value="ACM (Music)">Department of Arts, Culture and Media - Music</option>
+							<option value="ACM (Theater)">Department of Arts, Culture and Media - Theater</option>
+							<option value="ACM (Video Production)">Department of Arts, Culture and Media - Video Production</option>
+							<option value="Biology">Department of Biological Sciences</option>
+							<option value="CMLL">CMLL</option>
+							<option value="Chemistry">Department of Chemistry</option>
+							<option value="EES">Department of Earth and Environmental Sciences</option>
+							<option value="Economics">Department of Economics</option>
+							<option value="English">Department of English</option>
+							<option value="Global Affairs">Division of Global Affairs</option>
+							<option value="HLLC">Honors Living and Learning Community</option>
+							<option value="History">Department of History</option>
+							<option value="Honors College">Honors College</option>
+							<option value="Math and CS">Department of Mathematics and Computer Science</option>
+							<option value="OAS">Office of Academic Services</option>
+							<option value="PALS">Program in American Language Studies</option>
+							<option value="Philosophy">Department of Philosophy</option>
+							<option value="Physics">Department of Physics</option>
+							<option value="PoliSci">Department of Political Science</option>
+							<option value="Psychology">Department of Psychology</option>
+							<option value="SASN">School of Arts and Sciences Newark</option>
+							<option value="Social Work">Department of Social Work</option>
+							<option value="Sociology and Anthropology">Department of Sociology and Anthropology</option>
+							<option value="Spanish and Portuguese Studies">Department of Spanish and Portuguese Studies</option>
+							<option value="Summer Session">Summer Session</option>
+							<option value="Urban Ed">Department of Urban Education</option>
+							<option value="WGS">Program in Women's and Gender Studies</option>
+							<option value="Writing Program">Writing Program</option>
+						</select>
+					</td>
+				</div>
+			</div>
+
+			<hr>
+			<!-- This is the section is regarding to the Supervisor information -->
+			<div class="supervisor-information">
+				<h3>SUPERVISOR INFORMATION</h3>
+				<div class="input-container">
+					<label>Supervisor</label>
+					<input name="sup_name" id="supName"  type="text" required>
+				</div>
+				<div class="input-container">
+					<label>Supervisor's Email</label>
+					<input name="sup_email" id="supEmail" type="email" required>
+				</div>
+			</div>
+
+			<hr>
+			<!-- This is the section is regarding to the Request Radio Button Sections -->
+			<div class="request-information">
+
+				<h3>REQUEST</h3>
+			<p>
+				<div class="request-container">
+					<input type="radio" id="newEmp" name="request" value="newEmp">
+					<label for="newEmp">New Employee</label>
+				</div>
+
+				<div class="request-container">
+					<input type="radio" id="samePosNewRole" name="request" value="samePosNewRole">
+					<label for="samePosNewRole">Same Position-New Role</label>
+				</div>
+				<div class="request-container">
+					<input type="radio" id="transfer" name="request" value="transfer">
+					<label for="transfer">Transferring</label>
+				</div>
+				<div class="request-container">
+					<input type="radio" id="removeAllAccess" name="request" value="removeAllAccess">
+					<label for="removeAllAccess">Remove All Access</label>
+				</div>
+			</p>
+			</div>
+			<hr>
+			<div class="employee-information">
+			<p>
+				<h3>EMPLOYEE</h3>
+				<p>
+				<div class="employee-container">
+				<input type="radio" id="staff" name="employee" value="staff"> <label for="staff">Staff</label></div>
+				<div class="employee-container">
+				<input type="radio" id="faculty" name="employee" value="faculty"> <label for="faculty">Faculty</label></div>
+				<div class="employee-container">
+				<input type="radio" id="student_worker" name="employee" value="student_worker"> <label
+					for="student_worker">Student Worker</label></div>
+			</p>
+			</div>
+
+<style>
+
+
+</style>
+
+			<hr>
+			<div class="table-information">
+				<table class = "table-body">
+					<tr>
+						<th>IT System</th>
+						<th>Role</th>
+						<th>Justification for Access Requested</th>
+						<th>Action</th>
+						<th>Access Grantor</th>
+					</tr>
+					<tr>
+						<td>START(EMS)</td>
+						<td>
+
+							<select name="START" id="START" type="text">
+								<option value="admin">Admin</option> <!-- Add admin-->
+								<option value="supervisor">Supervisor</option>
+								<option value="advisor">Student Adivsor</option>
+								<option value="informational">Informational</option>
+							</select>
+
+						</td>
+
+
+						<td>
+							<textarea name="justStart" id="justStart" type="text"></textarea>
+						</td>
+						<td>
+							<select>
+								<option name="actionStart" id="actionStart" type="boolean">Add</option>
+								<option>Delete</option>
+							</select>
+						</td>
+						<td><button>Sign</button>&nbsp;<button>Reject</button></td>
+					</tr>
+
+					<tr>
+						<td>GradTracker</td>
+						<td>
+
+							<select name="GradTracker" id="gradTracker" type="text">
+								<option value="gt_none" default></option>
+								<option value="gt_supervisor">Supervisor</option>
+								<option value="gt_certifier">Certifier</option>
+								<option value="gt_deptCertifier">Department Certifier</option>
+								<option value="gt_registrar">Registrar</option>
+								<option value="gt_informational">Informational</option>
+								<option value="gt_UTEP">Urban Teaching and Educational (UTEP)</option>
+								<option value="gt_BAMA">BA/MA</option>
+								<option value="gt_honors">Honors College</option>
+							</select>
+
+						</td>
+
+
+						<td>
+							<textarea name ="justGT"id = "justGT" type="text"></textarea>
+						</td>
+						<td>
+							<select>
+								<option>Add</option>
+								<option>Delete</option>
+							</select>
+						</td>
+						<td><button>Sign</button>&nbsp;<button>Reject</button></td>
+					</tr>
+
+					<tr>
+						<td>Junior Tracker</td>
+						<td>
+
+							<select name="jTracker" id="jTracker" type="text">
+								<option value="jt_none" default></option>
+								<option value="jt_supervisor">Supervisor</option>
+								<option value="jt_certifier">Certifier</option>
+								<option value="jt_deptCertifier">Department Certifier</option>
+								<option value="jt_registrar">Registrar</option>
+								<option value="jt_informational">Informational</option>
+								<option value="jt_UTEP">Urban Teaching and Educational (UTEP)</option>
+								<option value="jt_BAMA">BA/MA</option>
+								<option value="jt_honors">Honors College</option>
+							</select>
+
+						</td>
+
+
+						<td>
+							<textarea name ="justJT"id = "justJT" type="text"></textarea>
+						</td>
+						<td>
+							<select>
+								<option>Add</option>
+								<option>Delete</option>
+							</select>
+						</td>
+						<td><button>Sign</button>&nbsp;<button>Reject</button></td>
+					</tr>
+
+
+
+					<tr>
+						<td>AMS(PTL)</td>
+						<td>
+
+							<select name="AMS" id="ams" type="text">
+								<option value="ams_none" default></option>
+								<option value="ams_supervisor">Supervisor</option>
+								<option value="ams_certifier">Certifier</option>
+								<option value="ams_deptCertifier">Department Certifier</option>
+								<option value="ams_registrar">Registrar</option>
+								<option value="ams_informational">Informational</option>
+								<option value="ams_UTEP">Urban Teaching and Educational (UTEP)</option>
+								<option value="ams_BAMA">BA/MA</option>
+								<option value="ams_honors">Honors College</option>
+							</select>
+
+						</td>
+
+
+						<td>
+							<textarea name ="justAMS"id = "justAMS" type="text"></textarea>
+						</td>
+						<td>
+							<select>
+								<option>Add</option>
+								<option>Delete</option>
+							</select>
+						</td>
+						<td><button>Sign</button>&nbsp;<button>Reject</button></td>
+					</tr>
+
+
+					<!--- -->
+					<tr>
+						<td>Faculty Integration</td>
+						<td>
+
+							<select name="facultyInt" id="facultyInt" type="text">
+								<option value="fi_none" default></option>
+								<option value="fi_supervisor">Supervisor</option>
+								<option value="fi_certifier">Certifier</option>
+								<option value="fi_deptCertifier">Department Certifier</option>
+								<option value="fi_registrar">Registrar</option>
+								<option value="fi_informational">Informational</option>
+								<option value="fi_UTEP">Urban Teaching and Educational (UTEP)</option>
+								<option value="fi_BAMA">BA/MA</option>
+								<option value="fi_honors">Honors College</option>
+							</select>
+
+						</td>
+
+
+						<td>
+							<textarea name ="justFI"id = "justFI" type="text"></textarea>
+						</td>
+						<td>
+							<select>
+								<option>Add</option>
+								<option>Delete</option>
+							</select>
+						</td>
+						<td><button>Sign</button>&nbsp;<button>Reject</button></td>
+					</tr>
+					<tr>
+						<td>SASN Website</td>
+						<td>
+
+							<select name="sasnWeb" id="sasnWeb" type="text">
+								<option value="sasn_none"default></option>
+								<option value="sasn_supervisor">Supervisor</option>
+								<option value="sasn_certifier">Certifier</option>
+								<option value="sasn_deptCertifier">Department Certifier</option>
+								<option value="sasn_registrar">Registrar</option>
+								<option value="sasn_informational">Informational</option>
+								<option value="sasn_UTEP">Urban Teaching and Educational (UTEP)</option>
+								<option value="sasn_BAMA">BA/MA</option>
+								<option value="sasn_honors">Honors College</option>
+							</select>
+
+						</td>
+
+
+						<td>
+							<textarea name ="justSASN"id = "justSASN" type="text"></textarea>
+						</td>
+						<td>
+							<select>
+								<option>Add</option>
+								<option>Delete</option>
+							</select>
+						</td>
+						<td><button>Sign</button>&nbsp;<button>Reject</button></td>
+					</tr>
+					<tr>
+						<td>Kronos</td>
+						<td>
+
+							<select name="kronos" id="kronos" type="text">
+								<option value="kr_none" default></option>
+								<option value="kr_supervisor">Supervisor</option>
+								<option value="kr_certifier">Certifier</option>
+								<option value="kr_deptCertifier">Department Certifier</option>
+								<option value="kr_registrar">Registrar</option>
+								<option value="kr_informational">Informational</option>
+								<option value="kr_UTEP">Urban Teaching and Educational (UTEP)</option>
+								<option value="kr_BAMA">BA/MA</option>
+								<option value="kr_honors">Honors College</option>
+							</select>
+
+						</td>
+
+
+						<td>
+							<textarea name ="justKronos"id = "justKronos" type="text"></textarea>
+						</td>
+						<td>
+							<select>
+								<option>Add</option>
+								<option>Delete</option>
+							</select>
+						</td>
+						<td><button>Sign</button>&nbsp;<button>Reject</button></td>
+					</tr>
+				</table>
+			</div>
+
+			<!--<p>For assistance selecting a security role, please refer to the the list of 
+<a href="https://askme.rutgers.edu/knowledgebase.php?article=7">security roles</a>
+			</p>
+			<p>
+				JUSTIFICATION (cont') FOR ACCESS REQUESTED<br>
+				
+			</p>
+			<hr>-->
+			<hr>
+			<div class="access-information">
+				<h3>ACCESS GRANTOR COMMENTS</h3>
+			<p>
+				<div class="input-container">
+				<label>Name</label>
+				<input name="access_grantor_name" id="access_grantor_name" type="text">
+				</div>
+				<div class="input-container">
+				<label>Comment</label> 
+				<input name="access_comment" id="access_comment" type="text">
+				</div>
+			</p>
+			</div>
+			<hr>
+			<!--
+			<p>
+				CONTACT (Receives access updates, if different than supervisor)<br>
+				Name:<input><br>
+				Phone: <input type="phone">
+			</p>-->
+
+		<div class="approval-information">
+			
+			<h3>APPROVAL</h3>
+			<b>Supervisor:</b>
+			<p>
+			By submitting this form, I certify that the user requires access to data within the above
+			system(s) to
+			perform their job duties. I understand that it is my obligation to ensure that adequate training is provided
+			to
+			the user
+			in compliance with state and federal laws, and University policies governing access to information contained
+			in
+			employee, applicant, and student records. I also certify that the person requesting access has read the
+			" School
+			of
+			Arts and Sciences Confidentiality Agreement".
+			</p>
+
+			<div class="input-container">
+				<label>Name</label> 
+				<input name="approvalName" id="approvalName" type="text">
+			</div>
+			<div class="input-container">
+				<label>Signature</label>
+				<input name="approvalSignature" id="approvalSignature" type="text">
+			</div>
+			<div class="input-container">
+				<label>Date</label>
+				<input name="approvalDate" id="approvalDate" type="date">
+			</div>
+			
+		</div>
+
+		<hr>
+		<div class="dean-approval-information">
+			<h3>SASN - Office of the Dean Approval</h3>
+			
+				<h4>SASN Dean Approval</h4>
+
+				<div class="input-container">
+					<label>Name</label> 
+				<input name="deanName" id="deanName" type="text">
+			</div>
+				<div class="input-container">
+					<label>Signature</label> 
+				<input name="deanSignature" id="deanSignature" type="text">
+			</div>
+				<div class="input-container">
+					<label>Date</label> 
+				<input name="deanDate" id="deanDate" type="date">
+			</div>
+			
+			<p>
+				<h4>SASN IT Approval</h4>
+				<div class="input-container">
+					<label>Name</label> 
+					<input name="itName" id="itName" type="text">
+			</div>
+				<div class="input-container">
+					<label>Signature</label> 
+					<input name="itSignature" id="itSignature" type="text">
+			</div>
+				<div class="input-container">
+					<label>Date</label>  
+					<input name="itDate" id="itDate" type="date">
+			</div>
+			</p>
+            <button onclick="submitITApproval()">Submit IT Approval</button>
+            <script>
+                
+                const allowedUsername = "lbn";
+                const allowedPassword = "password";
+              
+                // Function to check credentials and submit the IT Approval
+                function submitITApproval() {
+                  const enteredUsername = prompt("Enter your Net Id:");
+                  const enteredPassword = prompt("Enter your password:");
+              
+                  // Check if the entered credentials match the allowed credentials
+                  if (enteredUsername === allowedUsername && enteredPassword === allowedPassword) {
+                    const itName = document.getElementById("itName").value;
+                    const itSignature = document.getElementById("itSignature").value;
+                    const itDate = document.getElementById("itDate").value;
+              
+                    // Perform actions with the IT Approval data (e.g., submit a form, make an API call)
+                    alert(`IT Approval submitted by ${itName} with signature ${itSignature} on ${itDate}`);
+                  } else {
+                    alert("Invalid credentials. You are not authorized to submit IT Approval.");
+                  }
+                }
+              </script>
+		</div>
+        
+
+		<hr>
+		<div class = "submit-button">
+			<input type="submit">
+		</div>
+			<!--  
+		<div>
+			<p> Output Message : {{msg}}</p>
+			<p> First Name : {{First Name}}</p>
+			<p> Last Name : {{Last Name}}</p>
+			<p> Email : {{Email}}</p>
+			<p> Title : {{Title}}</p>
+			<p> NetID : {{NetID}}</p>
+			<p> Eff Date : {{Eff Date}}</p>
+			
+			
+		</div> -->
+		</form>
+	</div>
+</body>
+
+<!-- Using AngularJS HTTP Post JSON// not finished-->
+
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('postservicectrl', function ($scope, $http) {
+		scope.first_name = null;
+		scope.last_name = null;
+		scope.email = null;
+		scope.title = null;
+		scope.netid = null;
+		scope.effdate = null;
+
+		$scope.postdata = function (first_name, last_name, email, title, netid, effdate) (
+	    			var data = {
+			first_name: first_name,
+			last_name: last_name,
+			email: email,
+			title: title,
+			netid: netid,
+			effdate: effdate
+		}
+
+		$http.post("https://jsonplaceholder.typicode.com/posts", JSON.stringify(data))
+			.then(function (response)
+	    				console.log(response);
+	})
+	if (response.data) {
+		$scope.msg = "Post Data Submitted";
+		$scope.First Name = response.data.first_name;
+		$scope.Last Name = response.data.last_name;
+		$scope.Email = response.data.email;
+		$scope.Title = response.data.title;
+		$scope.NetID = response.data.netid;
+		$scope.Eff Date = response.data.effdate;
+	}
+	    			}, function (error) {
+		console.log(error);
+	}
+
+</script>
+
+</html>

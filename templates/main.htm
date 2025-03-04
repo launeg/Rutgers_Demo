@@ -1,0 +1,362 @@
+<!--
+<div class="row">
+    <div class="col-md-12">
+        <h1>Test</h1>
+        
+        <table class="table table-bordered">
+        	<tbody>
+        		<tr>
+        			<th>ID</th>
+        			<th>Name</th>
+        			<th>Address</th>
+        		</tr>
+        		<tr ng-repeat="user in data">
+        			<td>{{user.id}}</td>
+        			<td>{{user.name}}</td>
+        			<td>{{user.address}}</td>
+        		</tr>
+        	</tbody>
+        </table>
+        
+        {{data[2].name}}
+    </div>
+</div>
+-->
+
+<!--  the rest of laura's code here vvvv -->
+<!DOCTYPE html>
+<html lang="en-US">
+  <!--HEAD******************************************************************************** --> 
+  <head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <Style>
+    table.table2 {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .table2 tr:first-child {color: white;}
+    
+    .table2 td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    .table2 tr:first-child {
+      background-color: #d21033 !important;
+    }
+    tr:nth-child(even) {
+      background-color: #F0F0F0 ;
+    }
+    .table2 tr:hover {
+      background-color: #f8c9c8;
+    }
+
+    a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    }
+
+    a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .previous {
+      background-color: #f1f1f1;
+      color: black;
+    }
+
+    .next {
+      background-color: #d21033;
+      color: white;
+    }
+
+  .round {
+    border-radius: 50%;
+  }
+    </Style>
+    <meta charset="utf-8">
+    <title> SASN IT ACCESS REQUEST FORM LIST</title>
+    
+  </head>
+
+
+  <!--This is to add the Angular  --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  
+  <!--BODY********************************************************************************--> 
+  <body>
+    
+    <!--This is to add the Angular   
+    <div ng-app="">
+      <p>Name: <input type="text" ng-model="name"></p>
+      <p ng-bind="name"></p>
+    </div>
+    -->
+    <!--<h1>SASN IT ACCESS REQUEST FORM LIST</h1>-->
+    <hr>
+    
+
+    <!--Search B--> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <form class="example" action="action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <br>
+    <br>
+    <table class="table1"> <!--main idea, use the table info--> 
+      <tr>
+        <th>Froms Inprogress</th>
+        <td>1</td> <!-- i need to use the info, I need to review this--> 
+      </tr>
+      <tr>
+        <th>Forms Approved</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Forms Denied</th>
+        <td>1</td>
+      </tr>
+    </table>
+    <br>
+      <a href="#" class="previous">&laquo; Previous</a>
+      <a href="#" class="next">Next &raquo;</a>
+      
+      <a href="#" class="previous round">&#8249;</a>
+      <a href="#" class="next round">&#8250;</a>
+
+
+
+    <br>
+    <div class="container">
+      <label for="school-names">Schools:</label>
+      <select name=" school-names" id="school-names">
+        	<option value=SASN>School of Arts and Sciences -Newark</option> 
+			<option value="RBS">Rutgers Business School</option>
+			<option value="Nursing">School of Nursing</option>
+			<option value="SPAA">School of Public Affairs and Administration</option>
+			<option value="SCJ">School of Criminal Justice</option>
+      </select>
+      <br>
+      <br>
+ 
+      <label for="it-names">IT System::</label>
+      <select name="it-names" id="it-names">
+          <option value=" "></option>
+        <option value=" "></option>
+        <option value=" "></option>
+        <option value=""></option>
+      </select>
+      <br>
+      <br>
+ 
+      <label for="roles-names">Role:</label>
+      <select name="reles-names" id="roles-names">
+          <option value=" "></option>
+        <option value=" "></option>
+        <option value=" "></option>
+        <option value=""></option>
+      </select>
+      <br>
+      <br>
+      <label for="act-names">Last Action:</label>
+      <select name="act-names" id="act-names">
+           <option value=" "></option>
+        <option value=" "></option>
+        <option value=" "></option>
+        <option value=""></option>
+      </select>
+    </div> 
+    <!-- 
+    <style>
+      .container > * {
+        display: inline-block;
+      }
+    </style> -->
+
+    <br>
+    <br>
+    <table class="table2">
+      <tr>
+        <th>Date Sub</th>
+        <th>Date Eff</th>
+        <th>NetID</th> 
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>IT System</th>
+        <th>Roles</th>
+        <!-- is not just inprocess but, aproved by ..., ast thing thing that the form went throw--> 
+        <th>School & Department</th>
+        <th>Supervisor's Name</th>
+        <th>Last Action</th><!-- Date Last Submitted ..--> 
+        <th>Last Action's Date </th>
+      </tr>
+      <tr>
+        <td>mm-dd-yyyy</td>
+        <td>mm-dd-yyyy</td>
+        <td>lbn25</td>
+        <td>Laura</td> 
+        <td>Negrin</td>
+        <td>START</td>
+        <td>    </td>
+        <td>SASN - Math Department</td>
+        <td> John Smith</td>
+        <td>Supervisor signed</td>
+        <td>mm-dd-yyyy</td>
+      </tr>
+      <tr>
+        <td>mm-dd-yyyy</td>
+        <td>mm-dd-yyyy</td>
+        <td>kj351</td>
+        <td>Kai</td> 
+        <td>Jasey</td>
+        <td>GradTracker</td>
+        <td>   </td>
+        <td>SASN - Economy Department</td>
+        <td> John Smith</td>
+        <td>Supervisor signed</td>
+        <td>mm-dd-yyyy</td>
+      </tr>
+      <tr>
+        <td>mm-dd-yyyy</td>
+        <td>mm-dd-yyyy</td>
+        <td>kj351</td>
+        <td>John</td> 
+        <td>Smith</td>
+        <td>GradTracker</td>
+        <td>   </td>
+        <td>SASN - Economy Department</td>
+        <td> Grace Smith</td>
+        <td> SASN Dean (Name and last name) signed</td>
+        <td>mm-dd-yyyy</td>
+      </tr>
+      <tr>
+        <td>mm-dd-yyyy</td>
+        <td>mm-dd-yyyy</td>
+        <td>bs123</td>
+        <td>Beatriz</td> 
+        <td>Septima</td>
+        <td>GradTracker</td>
+        <td>   </td>
+        <td>SASN - Economy Department</td>
+        <td> Grace Smith</td>
+        <td> SASN Dean (Name and last name) signed</td>
+        <td>mm-dd-yyyy</td>
+      </tr>
+    </table>     
+    <script> 
+        function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+  
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+        </script>
+        <!--Filter/Search List -->
+        <script>
+          function myFunction2() {
+            // Declare variables
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('myInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName('li');
+          
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+              a = li[i].getElementsByTagName("a")[0];
+              txtValue = a.textContent || a.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+              } else {
+                li[i].style.display = "none";
+              }
+            }
+          }
+  		</script>
+
+
+
+  <!-- Is not getting the info from the json file -->
+	    <div ng-app="myApp" ng-controller="myController">
+
+	
+	        <table >
+	            <tr>
+
+	                <th>User ID</th>
+	                <th>NetID</th>
+	                <th>First Name</th>
+	                <th>Last Name</th>
+	                <th>Phone</th>
+	                <th>Email</th>
+	                <th>Application</th>
+	            </tr>
+	
+	            <tr ng-repeat="test in list">
+	                <td>{{test.userID}}</td>
+	                <td>{{test.netID}}</td>
+	                <td>{{test.firstName}}</td>
+	                <td>{{test.lastName}}</td>
+	                <td>{{test.phone}}</td>
+	                <td>{{test.email}}</td>
+	                <td>{{test.application}}</td>
+	                <!--  Add the other items -->
+	            </tr>
+
+
+	        </table>
+	    </div>
+	</body>
+
+<!--The Controller-->
+<!-- 
+	<script>
+
+    function myController($scope, $http) {
+        var url = "http://localhost/AccessRequest/templates/test.json";
+        $http.get(url).success(function (response) {
+            $scope.list = response;
+        });
+    }
+	</script>
+	-->
+	<script>
+	    var app = angular.module('myApp', []);
+	    app.controller('myController', function ($scope, $http) {
+	
+	            var request = {
+	                method: 'get',
+	                url: 'http://localhost/AccessRequest/templates/test.json',
+	            };
+	
+	            $scope.arrExamples = new Array;
+	            
+	            $http(request)
+	                .success(function (data) {
+	                    $scope.arrExamples = data;
+	                    $scope.list = $scope.arrExamples;
+	                })
+	                .error(function () {
+	
+	                });
+	        });
+
+	</script> 
+</html>

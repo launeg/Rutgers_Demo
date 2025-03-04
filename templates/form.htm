@@ -1,0 +1,487 @@
+<!--<div class="row">
+    <form name="ExForm" class="col-md-12 row" ng-submit="submit($event)">
+        <h1>Test Form</h1>
+        <div class="row">
+	        <div class="col-md-3">Name: </div>
+	        <div class="col-md-9">
+	        	<input type="text" ng-model="ex.name"/>
+	        </div>
+        </div>
+        <div class="col-md-3">Address:</div>
+        <div class="col-md-9">
+        	<input type="text" ng-model="ex.address"/>
+        </div>
+        <div class="row">
+        	<button type="button" ng-click="submit()" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+ -->
+
+<!-- laura and kai's code -->
+<html>
+	<head>
+
+		<style>
+			th{
+				/*border-style: none;*/
+				font-weight: normal;
+				background-color: #d21033;/*#DDD;*/
+				padding-top: 0.5em;
+				padding-bottom: 0.5em;
+				padding-left: 2em;
+				padding-right: 2em;
+				color: white;}
+			*{
+				font-family: arial;
+			}
+			input{
+				border-color: #d21033;
+				border-width: 1px;
+			}
+		</style>
+			<meta charset="utf-8">
+			<title> SASN IT ACCESS REQUEST FORM LIST</title>
+	
+		
+	</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<body>
+		<h1>SASN IT ACCESS REQUEST FORM</h1>
+		<hr>
+		<form>
+			<h4>USER INFORMATION</h4>
+		First Name:  <input type="text" name="name" required> <br>
+		Last Name:  <input type="text" name="name" required> <br>
+		Email:  <input type="email" name="email" required><br>
+		Title:<input type="text" name="title" required><br>
+		NetID:<input type="text" name="netid" required> <br>
+		Eff Date:<input type="date" name="effdate" required><br>
+		
+		<td>School</td>
+		<td>			
+			<select name="School" id="School">
+			<option value=SASN>School of Arts and Sciences -Newark</option> 
+			<option value="RBS">Rutgers Business School</option>
+			<option value="Nursing">School of Nursing</option>
+			<option value="SPAA">School of Public Affairs and Administration</option>
+			<option value="SCJ">School of Criminal Justice</option>
+			</select>
+
+		</td>
+		<br>
+		<td>Department</td>
+		<td>			
+			<select name="Department" id="Department"><!-- I need a list of all Department // add borders-->
+			<option value="AAAS">Department of Africana Studies</option> 
+			<option value="ACM (Arts)">Department of Arts, Culture and Media - Arts)</option> 
+			<option value="AFC">Academic Foundations Centers</option> 
+			<option value="AmStud">Program in American Studiess</option> 
+			<option value="Biology">Department of Biological Sciences</option>
+			<option value="Chemistry">Department of Chemistry</option>
+			<option value="EES">Department of Earth and Environmental Sciences</option>
+			<option value="Economics">Department of Economics</option>
+			<option value="English">Department of English</option>
+			<option value="History">Department of History</option>
+			<option value="Honors College">Honors College</option>
+			<option value="Math and CS">Department of Mathematics and Computer Science</option>
+			<option value="Philosophy">Department of Philosophy</option>
+			<option value="Physics">Department of Physics</option>
+			<option value="PoliSci">Department of Political Science</option>
+			<option value="Psychology">Department of Psychologys</option>
+			<option value="Social Work">Department of Social Work</option>
+			<option value="Sociology and Anthropology">Department of Sociology and Anthropology</option>
+			<option value="Spanish and Portuguese Studies">Department of Spanish and Portuguese Studies</option>
+			<option value="Urban Ed">Department of Urban Education</option>
+			<option value="WGS">Program in Women's and Gender Studies</option>
+			<option value="Writing Program">Writing Program</option>
+			<option value="SASN">School of Arts and Sciences  Newark</option>
+			<option value="Summer Session">Summer Session</option>
+			<option value="CMLL">CMLL</option>
+			<option value="ACM (Applied Music)">Department of Arts, Culture and Media - Applied Music</option>
+			<option value="ACM (Art History)">Department of Arts, Culture and Media - Art History</option>
+			<option value="ACM (Graphic Design)">Department of Arts, Culture and Media - Graphic Design</option>
+			<option value="ACM (Journalism)">Department of Arts, Culture and Media - Journalism</option>
+			<option value="ACM (Music)">Department of Arts, Culture and Media - Music</option>
+			<option value="ACM (Theater)">Department of Arts, Culture and Media - Theater</option>
+			<option value="ACM (Video Production)">Department of Arts, Culture and Media - Video Production</option>
+			<option value="HLLC">Honors Living and Learning Community</option>
+			<option value="PALS">Program in American Language Studies</option>
+			<option value="ACM (Core)">Department of Arts, Culture and Media - Core</option>
+			<option value="Global Affairs">Division of Global Affairs</option>
+			<option value="OAS">Office of Academic Services</option>
+			</select>
+
+		</td>
+		<br>
+		<hr>
+		<h4>SUPERVISOR INFORMATION</h4>
+		Supervisor:  <input name="sup_name" required><br>
+		
+		Supervisor's Email:  <input name="sup_email" type="email" required><!---->
+			<hr>
+				<p>
+					<b>REQUEST</b>
+
+
+<input type="radio" id="new" name="request" value="new"> <label for="new">New Employee</label>
+
+<input type="radio" id="samePosNewRole" name="request" value="samePosNewRole"> <label for="samePosNewRole">Same Position-New Role</label>
+
+<input type="radio" id="transfer" name="request" value="transfer"> <label for="transfer">Transferring</label>
+
+<input type="radio" id="removeAllAcces" name="request" value="removeAllAcces"> <label for="removeAllAcces">Remove All Access</label> 				
+				</p>
+			<hr>
+
+			<p>
+				<b>EMPLOYEE</b>
+
+<input type="radio" id="staff" name="employee" value="staff"> <label for="staff">Staff</label>
+<input type="radio" id="faculty" name="employee" value="faculty"> <label for="faculty">Faculty</label>
+<input type="radio" id="student_worker" name="employee" value="student_worker"> <label for="student_worker">Student Worker</label>
+			</p>
+			<hr>
+			<table>
+				<tr>
+					<th>IT System</th>
+					<th>Role</th>
+					<th>Justification for Access Requested</th>
+					<th>Action</th>
+					<th>Access Grantor</th>
+				</tr>
+				<tr>
+					<td>START(EMS)</td>
+					<td>
+						
+						<select name="START" id="START">
+  <option value="admin"></option> <!-- Add admin--> 
+  <option value="supervisor">Supervisor</option>
+  <option value="advisor">Student Adivsor</option>
+  <option value="informational">Informational</option>
+</select>
+
+					</td>
+
+
+					<td>
+						<textarea></textarea>
+					</td>
+					<td>
+						<select>
+							<option>Add</option>
+							<option>Delete</option>
+						</select>
+					</td>
+					<td><button>Sign</button>&nbsp;<button>Regect</button></td>
+				</tr>
+
+				<tr>
+					<td>GradTracker</td>
+					<td>
+						
+						<select name="GradTracker" id="GradTracker">
+  <option value="gt_none" default></option>
+  <option value="gt_supervisor">Supervisor</option>
+  <option value="gt_certifier">Certifier</option>
+  <option value="gt_deptCertifier">Department Certifier</option>
+  <option value="gt_registrar">Registrar</option>
+  <option value="gt_informational">Informational</option>
+  <option value="gt_UTEP">Urban Teaching and Educational (UTEP)</option>
+  <option value="gt_BAMA">BA/MA</option>
+  <option value="gt_honors">Honors College</option>
+</select>
+
+					</td>
+
+					
+					<td>
+						<textarea></textarea>
+					</td>
+					<td>
+						<select>
+							<option>Add</option>
+							<option>Delete</option>
+						</select>
+					</td>
+					<td><button>Sign</button>&nbsp;<button>Regect</button></td>
+				</tr>
+
+	<tr>
+					<td>Junior Tracker</td>
+					<td>
+						
+						<select name="jTracker" id="jTracker">
+  <option value="jt_none" default></option>
+  <option value="jt_supervisor">Supervisor</option>
+  <option value="jt_certifier">Certifier</option>
+  <option value="jt_deptCertifier">Department Certifier</option>
+  <option value="jt_registrar">Registrar</option>
+  <option value="jt_informational">Informational</option>
+  <option value="jt_UTEP">Urban Teaching and Educational (UTEP)</option>
+  <option value="jt_BAMA">BA/MA</option>
+  <option value="jt_honors">Honors College</option>
+</select>
+
+					</td>
+
+					
+					<td>
+						<textarea></textarea>
+					</td>
+					<td>
+						<select>
+							<option>Add</option>
+							<option>Delete</option>
+						</select>
+					</td>
+					<td><button>Sign</button>&nbsp;<button>Regect</button></td>
+				</tr>
+
+
+
+	<tr>
+					<td>AMS(PTL)</td>
+					<td>
+						
+						<select name="GradTracker" id="GradTracker">
+  <option value="gt_none" default></option>
+  <option value="gt_supervisor">Supervisor</option>
+  <option value="gt_certifier">Certifier</option>
+  <option value="gt_deptCertifier">Department Certifier</option>
+  <option value="gt_registrar">Registrar</option>
+  <option value="gt_informational">Informational</option>
+  <option value="gt_UTEP">Urban Teaching and Educational (UTEP)</option>
+  <option value="gt_BAMA">BA/MA</option>
+  <option value="gt_honors">Honors College</option>
+</select>
+
+					</td>
+
+					
+					<td>
+						<textarea></textarea>
+					</td>
+					<td>
+						<select>
+							<option>Add</option>
+							<option>Delete</option>
+						</select>
+					</td>
+					<td><button>Sign</button>&nbsp;<button>Regect</button></td>
+				</tr>
+
+
+<!--- -->
+			<tr>
+					<td>Faculty Integration</td>
+					<td>
+						
+						<select name="GradTracker" id="GradTracker">
+  <option value="gt_none" default></option>
+  <option value="gt_supervisor">Supervisor</option>
+  <option value="gt_certifier">Certifier</option>
+  <option value="gt_deptCertifier">Department Certifier</option>
+  <option value="gt_registrar">Registrar</option>
+  <option value="gt_informational">Informational</option>
+  <option value="gt_UTEP">Urban Teaching and Educational (UTEP)</option>
+  <option value="gt_BAMA">BA/MA</option>
+  <option value="gt_honors">Honors College</option>
+</select>
+
+					</td>
+
+					
+					<td>
+						<textarea></textarea>
+					</td>
+					<td>
+						<select>
+							<option>Add</option>
+							<option>Delete</option>
+						</select>
+					</td>
+					<td><button>Sign</button>&nbsp;<button>Regect</button></td>
+				</tr>
+<tr>
+					<td>SASN Website</td>
+					<td>
+						
+						<select name="GradTracker" id="GradTracker">
+  <option value="gt_none" default></option>
+  <option value="gt_supervisor">Supervisor</option>
+  <option value="gt_certifier">Certifier</option>
+  <option value="gt_deptCertifier">Department Certifier</option>
+  <option value="gt_registrar">Registrar</option>
+  <option value="gt_informational">Informational</option>
+  <option value="gt_UTEP">Urban Teaching and Educational (UTEP)</option>
+  <option value="gt_BAMA">BA/MA</option>
+  <option value="gt_honors">Honors College</option>
+</select>
+
+					</td>
+
+					
+					<td>
+						<textarea></textarea>
+					</td>
+					<td>
+						<select>
+							<option>Add</option>
+							<option>Delete</option>
+						</select>
+					</td>
+					<td><button>Sign</button>&nbsp;<button>Regect</button></td>
+				</tr>
+<tr>
+					<td>Kronos</td>
+					<td>
+						
+						<select name="GradTracker" id="GradTracker">
+  <option value="gt_none" default></option>
+  <option value="gt_supervisor">Supervisor</option>
+  <option value="gt_certifier">Certifier</option>
+  <option value="gt_deptCertifier">Department Certifier</option>
+  <option value="gt_registrar">Registrar</option>
+  <option value="gt_informational">Informational</option>
+  <option value="gt_UTEP">Urban Teaching and Educational (UTEP)</option>
+  <option value="gt_BAMA">BA/MA</option>
+  <option value="gt_honors">Honors College</option>
+</select>
+
+					</td>
+
+					
+					<td>
+						<textarea></textarea>
+					</td>
+					<td>
+						<select>
+							<option>Add</option>
+							<option>Delete</option>
+						</select>
+					</td>
+					<td><button>Sign</button>&nbsp;<button>Regect</button></td>
+				</tr>
+			</table>
+<hr>
+<!--<p>For assistance selecting a security role, please refer to the the list of 
+<a href="https://askme.rutgers.edu/knowledgebase.php?article=7">security roles</a>
+			</p>
+			<p>
+				JUSTIFICATION (cont') FOR ACCESS REQUESTED<br>
+				
+			</p>
+			<hr>-->
+			<hr>
+			<p>
+				ACCESS GRANTOR COMMENTS<br>
+				Name:<input><br>
+				Text: <input type="texy">
+			</p>
+			<hr>
+			<!--
+			<p>
+				CONTACT (Receives access updates, if different than supervisor)<br>
+				Name:<input><br>
+				Phone: <input type="phone">
+			</p>-->
+			<hr>
+
+			<p>
+				<h3>APPROVAL</h3><br>
+				<b>Supervisor</b>: By submitting this form, I certify that the user requires access to data within the above system(s) to
+perform their job duties. I understand that it is my obligation to ensure that adequate training is provided to the user
+in compliance with state and federal laws, and University policies governing access to information contained in
+employee, applicant, and student records. I also certify that the person requesting access has read the "School of
+Arts and Sciences Confidentiality Agreement
+			</p>
+
+			<p>
+				Name: <input>
+				Signature:<input>
+				Date:<input>
+
+			</p>
+			<hr>
+			<center> 
+				<h3>
+					SASN - Office of the Dean Approval
+				</h3>
+			</center>
+			<p>
+				<b>SASN Dean Approval</b>
+				Name: <input>
+				Signature: <input>
+				Date: <input>
+			</p>
+			<p>
+				<b>SASN IT Approval</b>
+				Name: <input>
+				Signature: <input>
+				Date: <input>
+			</p>
+
+			<hr>
+
+			<input type="submit">
+			<!--  
+		<div>
+			<p> Output Message : {{msg}}</p>
+			<p> First Name : {{First Name}}</p>
+			<p> Last Name : {{Last Name}}</p>
+			<p> Email : {{Email}}</p>
+			<p> Title : {{Title}}</p>
+			<p> NetID : {{NetID}}</p>
+			<p> Eff Date : {{Eff Date}}</p>
+			
+			
+		</div> -->
+			
+		</form>
+	</body>
+	
+	<!-- Using AngularJS HTTP Post JSON// not finished-->
+	
+	<script>
+	    var app = angular.module('myApp', []);
+	    app.controller('postservicectrl', function ($scope, $http) {
+	    	scope.first_name = null;
+	    	scope.last_name = null;
+	    	scope.email = null;
+	    	scope.title = null;
+	    	scope.netid = null;
+	    	scope.effdate = null;
+	    	
+	    	$scope.postdata = function (first_name, last_name, email, title, netid, effdate) (
+	    			var data = {
+	    					first_name: first_name,
+	    					last_name: last_name,
+	    					email: email,
+	    					title: title,
+	    					netid: netid,
+	    					effdate: effdate
+	    			}
+	    			
+	    			$http.post("https://jsonplaceholder.typicode.com/posts", JSON.stringify(data))
+	    			.then(function (response)
+	    				console.log(response);
+	   				})
+	   				if (response.data) {
+						$scope.msg = "Post Data Submitted";
+						$scope.First Name = response.data.first_name;
+						$scope.Last Name = response.data.last_name;
+						$scope.Email = response.data.email;
+						$scope.Title = response.data.title;
+						$scope.NetID = response.data.netid;
+						$scope.Eff Date = response.data.effdate;
+					}
+	    			}, function (error) {
+	    				console.log(error);
+	    			}
+
+	</script> 
+</html>
+
+
+

@@ -1,0 +1,289 @@
+header {
+  background-color: #d21033;
+  padding-bottom: 7.65rem;
+
+}
+
+body {
+  background-color: rgba(128, 128, 128, 0.119);
+}
+
+form {
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  border-style: black;
+  border-radius: 1%;
+}
+
+
+@media screen and (min-aspect-ratio: 3.7) {
+
+  /*  1920 x 1080 or larger screens go here */
+  .table-information {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: auto;
+  }
+
+  form {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    border-style: black;
+    border-radius: 1%;
+  }
+
+  .container {
+    display: inline-block;
+    margin-left: 6%;
+    margin-right: 4%;
+    margin-bottom: 1%;
+  }
+
+  .container label {
+    display: block;
+    margin-bottom: 1%;
+    margin-left: 7%;
+  }
+
+  .container select {
+    margin-left: 7%;
+    border-color: #d21033;
+    border-width: 2px;
+    height: 2rem;
+    width: fit-content;
+    background-color: beige;
+  }
+
+}
+
+@media screen and (max-aspect-ratio: 3.7) {
+
+  /*screens smaller than 1920 x 1080 go here */
+  .table-information {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .container {
+    display: inline-block;
+    margin-left: 3%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+  }
+
+  .container label {
+    display: block;
+    margin-bottom: 1%;
+    margin-left: 1%;
+  }
+
+  .container select {
+    margin-left: 1%;
+    border-color: #d21033;
+    border-width: 2px;
+    height: 2rem;
+    width: fit-content;
+    background-color: beige;
+  }
+
+
+}
+
+
+
+[data-tab-content] {
+  display: none;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.tab.active {
+  background-color: #CCC;
+}
+.tab-content {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+
+
+
+.nav_buttons{
+  margin-left: 39.5%;
+}
+.search_bar input {
+  border-color: #d21033;
+  border-width: 2px;
+  margin-top: 2%;
+  margin-left: 0%;
+  height: 1.5rem;
+  width: fit-content;
+  background-color: beige;
+  
+}
+.search_bar button{
+  width: ;
+  height: 1.9rem;
+}
+
+.navbar img {
+  position: absolute;
+}
+
+.image1 {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  z-index: 2;
+}
+
+.image2 {
+  z-index: 1;
+}
+
+.form-container h1 {
+  padding-top: 1%;
+  padding-left: 1%;
+}
+
+
+
+
+table.table2 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+.table2 tr:first-child {
+  color: white;
+}
+
+.table2 td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.table2 tr:first-child {
+  background-color: #d21033 !important;
+}
+
+tr:nth-child(even) {
+  background-color: #F0F0F0;
+}
+
+.table2 tr:hover {
+  background-color: #f8c9c8;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #d21033;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+
+
+table.table3 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+.table3 tr:first-child {
+  color: white;
+}
+
+.table3 td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.table3 tr:first-child {
+  background-color: #d21033 !important;
+}
+
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #d21033;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
