@@ -19,6 +19,7 @@ Supervisor Dashboard: Review/approve pending requests; also track their own subm
 - Approval Workflow Automation: Requests flow through Supervisor → Role Manager → IT Team automatically.
 - Scalable and maintainable: Built to extend for future request types (via text input instead of hardcoded dropdowns).
 
-![Sequence Diagram HLD]()
+![Sequence Diagram HLD](https://github.com/launeg/Rutgers_Demo/blob/main/SequenceDiagramRutgersHLD.png)
+
 
 
