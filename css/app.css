@@ -1,0 +1,54 @@
+/* Cleanup on top of Laura's original form.css and main.css (loaded last, so these win) */
+* { font-family: Arial, Helvetica, sans-serif; }
+h1, h3 { font-weight: 600; }
+.form-container h1 { padding-left: 20px; }
+
+.demo-banner { background: #fff3cd; color: #5c4400; text-align: center; padding: .4rem; font-size: .85rem; }
+
+/* nav as a tab bar on every page */
+.tabs { display: flex; justify-content: flex-start; align-items: center; list-style: none; margin: 0; padding: 0 20px; border-bottom: 1px solid #999; }
+.tab { padding: .8rem 1.2rem; line-height: 1.2; }
+.tab a { color: #222; text-decoration: none; }
+.tab a:hover { color: #d21033; }
+.tab.user { margin-left: auto; color: #555; }
+
+/* form sections: one even layout instead of percent margins */
+.form-container form { margin: 20px; padding: 1rem 1.5rem 1.5rem; max-width: 1000px; }
+.form-container form h3 { margin: 1rem 0 .75rem; }
+.user-information, .supervisor-information, .request-information, .employee-information, .access-information { margin: 0; padding: 0; }
+.form-container .input-container,
+.form-container .drop-container { display: inline-block; vertical-align: top; margin: 0 1.5rem 1rem 0; }
+.form-container .input-container label,
+.form-container .drop-container label { display: block; margin: 0 0 .3rem; }
+.form-container .input-container input,
+.form-container .drop-container select { display: block; margin: 0; margin-left: 0; width: 220px; height: 2rem; }
+.form-container .request-container,
+.form-container .employee-container { display: inline-block; margin: 0 1.5rem .5rem 0; }
+.form-container .request-container label,
+.form-container .employee-container label { margin: 0; }
+.form-container .request-container input[type="radio"],
+.form-container .employee-container input[type="radio"] { float: none; width: auto; height: auto; margin: 0 .4rem 0 0; vertical-align: middle; }
+.form-container hr { border: 0; border-top: 1px solid #ddd; margin: 1rem 0; }
+
+/* roles table */
+.table-information { text-align: left; }
+.form-container table.table-body { display: table; width: 100%; margin: 0; }
+.table-body td { padding: .6rem; border-bottom: 1px solid #ddd; text-align: left; }
+.table-body th { text-align: left; }
+.role-list label { display: inline-block; margin-right: 1.2rem; }
+.role-list input[type="checkbox"] { height: auto; margin-right: .3rem; vertical-align: middle; }
+.form-container textarea { width: 100%; box-sizing: border-box; border: 2px solid #d21033; background: beige; }
+
+/* buttons */
+button { background: #d21033; color: #fff; border: 0; border-radius: 4px; padding: .6rem 1.4rem; cursor: pointer; }
+button:hover { background: #a80d29; }
+.submit-button { margin-left: 0; }
+
+/* messages and status */
+.error { color: #b00020; margin: 0 0 .75rem; }
+.notice { background: #e6f4ea; padding: .5rem 1rem; margin: 1rem 20px; }
+.status { padding: .1rem .5rem; border-radius: 1rem; background: #ddd; white-space: nowrap; }
+.status.approved { background: #c8e6c9; }
+.status.denied { background: #ffcdd2; }
+.summary { margin: 1rem 20px; }
+.login-note { margin: 0 0 1rem; }
