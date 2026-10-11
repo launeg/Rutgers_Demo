@@ -1,0 +1,46 @@
+name: rutgers-access
+
+services:
+  db:
+    image: mysql:8.4
+    container_name: rutgers-access-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:-root-dev-only}
+      MYSQL_DATABASE: ${DB_NAME:-rutgersaccessgrantsystem}
+      MYSQL_USER: ${DB_USER:-access_app}
+      MYSQL_PASSWORD: ${DB_PASS:-change-me}
+    ports:
+      - "127.0.0.1:${DB_PORT:-3307}:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      # Run once, in order, when the data volume is first created.
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  web:
+    build: ./docker/php
+    container_name: rutgers-access-web
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: ${DB_NAME:-rutgersaccessgrantsystem}
+      DB_USER: ${DB_USER:-access_app}
+      DB_PASS: ${DB_PASS:-change-me}
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: php -S 0.0.0.0:8000 -t /app
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8000}:8000"
+
+volumes:
+  db_data:
