@@ -1,5 +1,4 @@
--- Schema plus lookup data. Replaces the two ad-hoc phpMyAdmin dumps, which did
--- not match the application code. Loaded automatically on first container start.
+-- Schema plus lookup data. Loads on first container start.
 
 CREATE TABLE users (
   userID       INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
