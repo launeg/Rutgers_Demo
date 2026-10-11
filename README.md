@@ -33,7 +33,11 @@ make down    # stops the containers
 
 On first start MySQL loads `db/schema.sql` (tables and lookup data) and `db/seed.sql` (mocked users and four sample requests, one per workflow status). MySQL is on `127.0.0.1:3307` as I have a local MySQL already. The compose project and container names are prefixed `rutgers-access`..
 
-**Current status:** `db/schema.sql` is the new source of truth and replaces the old phpMyAdmin dumps. The pages in `src/` still query the old table layout and are being rewritten against it in follow-up changes, so they do not work yet.
+**Using it:** open http://localhost:8000 and sign in as a fictional user (the sign-in stands in for campus SSO and is not real authentication). Submitters can file a request and see their own list. Supervisors, role managers and IT admins see the queue for their stage. Approve and deny buttons are not built yet.
+
+**Code layout:** `lib/data.php` holds every query (prepared statements, one transaction for submitting a request) and the validation rules, `lib/auth.php` the session and CSRF helpers, `lib/view.php` the page chrome, and `src/` one file per page. `css/form.css` and `css/main.css` are the original styles, `css/app.css` adds a few small rules. `db/schema.sql` is the source of truth for tables.
+
+`api/` and `model/` are an older layer that still targets the previous table.
 
 ### Configuration
 
