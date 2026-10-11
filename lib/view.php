@@ -38,20 +38,29 @@ function status_label(string $status): string
     return ucfirst(str_replace('_', ' ', $status));
 }
 
-/** Table of requests, shared by the submitter and approver pages. */
-function render_form_table(array $forms): void
+function action_form(int $formId, string $token): string
+{
+    return '<form method="post" action="/src/action.php" class="row-actions">'
+        . '<input type="hidden" name="csrf" value="' . h($token) . '"><input type="hidden" name="formId" value="' . $formId . '">'
+        . '<input type="text" name="comment" maxlength="500" placeholder="Comment (optional)">'
+        . '<button name="action" value="approve">Sign</button> <button name="action" value="deny" class="reject">Reject</button></form>';
+}
+
+/** Table of requests, shared by the submitter and approver pages. Pass a CSRF token to add Sign/Reject buttons. */
+function render_form_table(array $forms, ?string $token = null): void
 {
     if (!$forms) {
         echo '<p class="summary">No requests.</p>';
         return;
     }
     echo '<div class="table-information"><table class="table2"><tr><th>Date Sub</th><th>Date Eff</th><th>Employee</th><th>NetID</th>'
-        . '<th>Department</th><th>Request</th><th>Roles</th><th>Supervisor</th><th>Status</th></tr>';
+        . '<th>Department</th><th>Request</th><th>Roles</th><th>Supervisor</th><th>Status</th>' . ($token ? '<th>Action</th>' : '') . '</tr>';
     foreach ($forms as $f) {
         echo '<tr><td>' . h(substr($f['entryDate'], 0, 10)) . '</td><td>' . h($f['effDate']) . '</td><td>' . h($f['employee'])
             . '</td><td>' . h($f['userNetID']) . '</td><td>' . h($f['department']) . '</td><td>' . h($f['requestName'])
             . '</td><td>' . h($f['roles']) . '</td><td>' . h($f['supervisor'])
-            . '</td><td><span class="status ' . h($f['status']) . '">' . h(status_label($f['status'])) . '</span></td></tr>';
+            . '</td><td><span class="status ' . h($f['status']) . '">' . h(status_label($f['status'])) . '</span></td>'
+            . ($token ? '<td>' . action_form((int) $f['formID'], $token) . '</td>' : '') . '</tr>';
     }
     echo '</table></div>';
 }
