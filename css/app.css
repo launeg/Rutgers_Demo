@@ -42,6 +42,10 @@ h1, h3 { font-weight: 600; }
 button { background: #d21033; color: #fff; border: 0; border-radius: 4px; padding: .6rem 1.4rem; cursor: pointer; }
 button:hover { background: #a80d29; }
 .submit-button { margin-left: 0; }
+button.reject { background: #555; }
+.form-container form.row-actions { margin: 0; padding: 0; max-width: none; background: none; }
+.row-actions input[type="text"] { width: 150px; height: 1.8rem; margin-bottom: .3rem; }
+.row-actions button { margin-top: 0; padding: .4rem .9rem; }
 
 /* messages and status */
 .error { color: #b00020; margin: 0 0 .75rem; }

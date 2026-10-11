@@ -1,4 +1,4 @@
-.PHONY: up down reset
+.PHONY: up down reset test
 
 up:
 	@test -f .env || cp .env.example .env
@@ -11,3 +11,7 @@ down:
 reset:
 	docker compose down -v
 	$(MAKE) up
+
+# Unit tests need no database. Composer and PHPUnit run in a throwaway container.
+test:
+	docker run --rm -v "$(CURDIR)":/app -w /app composer:2 sh -c "composer install --no-interaction --quiet && vendor/bin/phpunit"
