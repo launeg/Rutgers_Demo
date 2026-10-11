@@ -1,4 +1,3 @@
-/* Cleanup on top of Laura's original form.css and main.css (loaded last, so these win) */
 * { font-family: Arial, Helvetica, sans-serif; }
 h1, h3 { font-weight: 600; }
 .form-container h1 { padding-left: 20px; }

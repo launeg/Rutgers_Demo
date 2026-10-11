@@ -1,6 +1,4 @@
 <?php
-/** Shared page chrome. Styles are Laura's original form.css and main.css. */
-
 function h(?string $text): string
 {
     return htmlspecialchars((string) $text, ENT_QUOTES, 'UTF-8');
