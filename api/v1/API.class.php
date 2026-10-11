@@ -142,7 +142,7 @@ abstract class API
             }
             else
             {
-                $this->response = $this->_response(array("error"=>"A Server Error Has Occurred. Please contact system administrators at sasnit@newark.rutgers.edu"), 500);
+                $this->response = $this->_response(array("error"=>"A Server Error Has Occurred. Please contact system administrators"), 500);
             }
             $apilog->logRequest($ruid, $endpoint, $requestQuery, $this->response);
             return $this->response;
