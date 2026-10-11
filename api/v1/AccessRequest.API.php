@@ -155,8 +155,7 @@ class AdvisorAssignmentAPI extends API
     }
     protected function form(){
 		global $conn;
-		$conn = mysqli_connect("localhost","root","!eric123","rutgersaccessgrantsystem");
-		mysqli_set_charset($conn,"utf8mb4");
+		$conn = db_connect();
 		if($this->method == 'GET'){
 			if($this->verb == "netID"){
 				$out = "";
@@ -182,8 +181,7 @@ class AdvisorAssignmentAPI extends API
     {
 		
 		global $conn;
-		$conn = mysqli_connect("localhost","root","!eric123","rutgersaccessgrantsystem");
-		mysqli_set_charset($conn,"utf8mb4");	
+		$conn = db_connect();	
 		if($this->method == 'GET'){
 			if($this->verb == "netID"){
 				$out = "";

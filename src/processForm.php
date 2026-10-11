@@ -109,17 +109,9 @@ $roles = $START;
 
 
 //Connection info
-$host = "localhost";
-$dbname = "rutgersaccessgrantsystem";
-$user = "root";
-$password = "root";
-$conn = mysqli_connect($host,$user,$password, $dbname);
-
-if(mysqli_connect_errno()){
-    echo "Connection Error \n". mysqli_connect_error();
-}else{
-    echo "Connection successful \n";
-}
+require_once __DIR__ . '/../config/config.php';
+$conn = db_connect();
+echo "Connection successful \n";
 
 
 // sql query to insert supervisors' email and name (Lucas added)

@@ -1,5 +1,6 @@
 <?php
-include 'connect.php';
+require_once __DIR__ . '/../config/config.php';
+$conn = db_connect();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // SQL query to fetch data
