@@ -166,16 +166,8 @@
               </tr>
               <?php
               // include 'submitter.php';
-              $host = "localhost";
-              $dbname = "rutgersaccessgrantsystem";
-              $username = "root";
-              $password = "root";
-
-              $conn = mysqli_connect($host,$username,$password,$dbname);
-
-              if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-              }
+              require_once __DIR__ . '/../config/config.php';
+              $conn = db_connect();
               
               // need to check the user currently logged in to determine what the user is allowed to see,
               // what they need to approve or deny, and their "access level"

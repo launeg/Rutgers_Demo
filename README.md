@@ -21,5 +21,16 @@ Supervisor Dashboard: Review/approve pending requests; also track their own subm
 
 ![Sequence Diagram HLD](https://github.com/launeg/Rutgers_Demo/blob/main/SequenceDiagramRutgersHLD.png)
 
+### Configuration
+
+Settings come from environment variables, or from a git-ignored `.env` file in the project root. Copy `.env.example` to `.env` and set:
+
+| Variable | Purpose |
+|---|---|
+| `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS` | MySQL connection |
+| `APP_ENV` | `development` enables verbose API errors; anything else hides them |
+
+All database connections go through `db_connect()` in `config/config.php`. The original demo hardcoded demo credentials and campus hostnames in several files; those were removed, and verbose errors are now gated by `APP_ENV` instead of a server-address allowlist.
+
 
 

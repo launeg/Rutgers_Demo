@@ -1,6 +1,5 @@
 <?php
 require_once '../../model/apilog.model.php';
-include_once '../../model/config/definitions.php';
 
 abstract class API
 {
@@ -132,7 +131,7 @@ abstract class API
             $endpoint = 'Main error thrown';
             $requestQuery = $this->jsonData;
             $apilog->addError(array("error"=>$this->errors->getMessage()));
-            if(array_search($_SERVER["SERVER_ADDR"], TEST_ADDR)!==false || array_search($_SERVER["HTTP_HOST"], TEST_HOST)!==false)
+            if(is_debug())
             {
                 $this->response = $this->_response(array("error"=>$this->errors->getMessage()), 500);
             }
@@ -197,7 +196,7 @@ abstract class API
         if(!is_null($this->args) && array_key_exists(0,$this->args) && $this->args[0] == "file")
             return $data;
         else {
-            if(!empty($this->warnings) && (array_search($_SERVER["SERVER_ADDR"], TEST_ADDR)!==false || array_search($_SERVER["HTTP_HOST"], TEST_HOST)!==false)) {
+            if(!empty($this->warnings) && is_debug()) {
                 header("X-Warnings-Present: TRUE");
                 $apilog = new APILog("db_log");
                 if(isset($_SESSION) && isset($_SESSION['phpCas']))

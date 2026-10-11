@@ -1,6 +1,5 @@
 <?php
 require_once "config/db_connect.php";
-require_once "config/definitions.php";
 require_once "MysqliDb.php";
 
 
@@ -1186,7 +1185,7 @@ The SASN-IT team appologizes for this inconvenience.
 	{
 	    $temp = $input;
 	    $input = array(0=>$temp);
-	    if(array_search($_SERVER["SERVER_ADDR"], TEST_ADDR)!==false || array_search($_SERVER["HTTP_HOST"], TEST_HOST)!==false || $this->debug)   //if server is one of the defined test servers
+	    if(is_debug() || $this->debug)   //verbose errors only when APP_ENV=development
 	    {
 	        if($this->apiReturn)
 	        {
