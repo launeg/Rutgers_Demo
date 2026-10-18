@@ -56,3 +56,10 @@ button.reject { background: #555; }
 .status.denied { background: #ffcdd2; }
 .summary { margin: 1rem 20px; }
 .login-note { margin: 0 0 1rem; }
+
+/* search and filters on My requests */
+.form-container form.filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .75rem 1rem; margin: 0 20px 1rem; padding: 0; max-width: none; }
+.filters label { display: flex; flex-direction: column; gap: .3rem; font-size: .9rem; }
+.filters input, .filters select { height: 2rem; min-width: 160px; }
+.filters button { padding: .45rem 1.2rem; }
+.filters a.clear { align-self: center; color: #555; }
