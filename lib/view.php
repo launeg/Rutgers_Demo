@@ -57,7 +57,7 @@ function render_form_table(array $forms, ?string $token = null): void
         . '<th>Department</th><th>Request</th><th>Roles</th><th>Supervisor</th><th>Status</th>' . ($token ? '<th>Action</th>' : '') . '</tr>';
     foreach ($forms as $f) {
         echo '<tr><td>' . h(substr($f['entryDate'], 0, 10)) . '</td><td>' . h($f['effDate']) . '</td><td>' . h($f['employee'])
-            . '</td><td>' . h($f['userNetID']) . '</td><td>' . h($f['department']) . '</td><td>' . h($f['requestName'])
+            . '</td><td>' . h($f['userNetID']) . '</td><td>' . h($f['department']) . '</td><td>' . h($f['requestType'])
             . '</td><td>' . h($f['roles']) . '</td><td>' . h($f['supervisor'])
             . '</td><td><span class="status ' . h($f['status']) . '">' . h(status_label($f['status'])) . '</span></td>'
             . ($token ? '<td>' . action_form((int) $f['formID'], $token) . '</td>' : '') . '</tr>';

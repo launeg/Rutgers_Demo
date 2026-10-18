@@ -34,7 +34,8 @@ h1, h3 { font-weight: 600; }
 .form-container table.table-body { display: table; width: 100%; margin: 0; }
 .table-body td { padding: .6rem; border-bottom: 1px solid #ddd; text-align: left; }
 .table-body th { text-align: left; }
-.role-list label { display: inline-block; margin-right: 1.2rem; }
+.table-body td:first-child { white-space: nowrap; vertical-align: top; }
+.role-list label { display: inline-block; margin: 0 1.2rem .4rem 0; white-space: nowrap; }
 .role-list input[type="checkbox"] { height: auto; margin-right: .3rem; vertical-align: middle; }
 .form-container textarea { width: 100%; box-sizing: border-box; border: 2px solid #d21033; background: beige; }
 

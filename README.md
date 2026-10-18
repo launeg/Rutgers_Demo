@@ -25,7 +25,7 @@ Supervisor Dashboard: Review/approve pending requests; also track their own subm
 
 ### Local development
 
-Requires Docker. No PHP or MySQL install needed.
+**Prerequisites:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) (on macOS: `brew install --cask docker-desktop`), opened once and running. The Homebrew `docker` formula is only the CLI and has no engine, so `make up` fails with it alone. Check with `docker info`. No PHP or MySQL install needed.
 
 ```
 make up      # copies .env.example to .env if missing, starts MySQL + PHP on http://localhost:8000
@@ -33,6 +33,8 @@ make reset   # wipes this project's DB volume and reloads schema + demo data
 make down    # stops the containers
 make test    # PHPUnit unit tests (validation and approval rules), no database needed
 ```
+
+The schema and seed only load when the database volume is first created, so run `make reset` after pulling changes to `db/`.
 
 On first start MySQL loads `db/schema.sql` (tables and lookup data) and `db/seed.sql` (mocked users and four sample requests, one per workflow status). MySQL is on `127.0.0.1:3307` as I have a local MySQL already. The compose project and container names are prefixed `rutgers-access`..
 

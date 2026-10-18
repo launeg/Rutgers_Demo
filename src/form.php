@@ -84,7 +84,7 @@ echo '</div><hr>';
 
 $bySystem = [];
 foreach ($options['roles'] as $r) {
-    $bySystem[$r['systemName']][] = $r;
+    $bySystem[$r['systemLabel']][] = $r;
 }
 $selected = array_map('strval', $in['roleIds'] ?? []);
 echo '<div class="table-information"><table class="table-body"><tr><th>IT System</th><th>Roles</th></tr>';

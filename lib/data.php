@@ -35,10 +35,10 @@ function form_options(mysqli $conn): array
 {
     return [
         'departments'   => query_all($conn, 'SELECT schoolDeptID AS id, CONCAT(schoolName, " / ", deptName) AS label FROM schoolanddepartment ORDER BY label'),
-        'requestTypes'  => query_all($conn, 'SELECT requestID AS id, requestName AS label FROM requesttypes ORDER BY requestID'),
-        'employeeTypes' => query_all($conn, 'SELECT empTypeID AS id, empType AS label FROM employeetypes ORDER BY empTypeID'),
+        'requestTypes'  => query_all($conn, 'SELECT requestID AS id, label FROM requesttypes ORDER BY requestID'),
+        'employeeTypes' => query_all($conn, 'SELECT empTypeID AS id, label FROM employeetypes ORDER BY empTypeID'),
         'supervisors'   => query_all($conn, 'SELECT userID AS id, CONCAT(firstName, " ", lastName) AS label FROM users WHERE userRole = "supervisor" ORDER BY lastName'),
-        'roles'         => query_all($conn, 'SELECT r.roleID AS id, a.systemName AS systemName, r.roleName AS label FROM roles r JOIN application a ON a.systemID = r.systemID ORDER BY a.systemName, r.roleName'),
+        'roles'         => query_all($conn, 'SELECT r.roleID AS id, a.label AS systemLabel, r.label FROM roles r JOIN application a ON a.systemID = r.systemID ORDER BY a.systemID, r.roleID'),
     ];
 }
 
@@ -134,8 +134,8 @@ const FORM_LIST_SQL = 'SELECT f.formID, f.entryDate, f.effDate, f.status, f.user
         CONCAT(f.userFirstName, " ", f.userLastName) AS employee,
         CONCAT(sd.schoolName, " / ", sd.deptName) AS department,
         CONCAT(s.firstName, " ", s.lastName) AS supervisor,
-        rt.requestName,
-        GROUP_CONCAT(CONCAT(a.systemName, ": ", r.roleName) ORDER BY a.systemName SEPARATOR ", ") AS roles
+        rt.label AS requestType,
+        GROUP_CONCAT(CONCAT(a.label, ": ", r.label) ORDER BY a.systemID, r.roleID SEPARATOR ", ") AS roles
     FROM forms f
     JOIN schoolanddepartment sd ON sd.schoolDeptID = f.schoolDeptID
     JOIN users s ON s.userID = f.supervisorUserID

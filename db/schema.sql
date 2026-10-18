@@ -18,25 +18,30 @@ CREATE TABLE schoolanddepartment (
 
 CREATE TABLE application (
   systemID     INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  systemName   VARCHAR(100) NOT NULL UNIQUE
+  systemName   VARCHAR(100) NOT NULL UNIQUE,
+  label        VARCHAR(100) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
 
 CREATE TABLE roles (
   roleID       INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   systemID     INT UNSIGNED NOT NULL,
   roleName     VARCHAR(100) NOT NULL,
+  label        VARCHAR(100) NOT NULL,
   UNIQUE KEY uq_system_role (systemID, roleName),
+  UNIQUE KEY uq_system_role_label (systemID, label),
   CONSTRAINT fk_roles_application FOREIGN KEY (systemID) REFERENCES application (systemID)
 ) ENGINE=InnoDB;
 
 CREATE TABLE requesttypes (
   requestID    INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  requestName  VARCHAR(100) NOT NULL UNIQUE
+  requestName  VARCHAR(100) NOT NULL UNIQUE,
+  label        VARCHAR(100) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
 
 CREATE TABLE employeetypes (
   empTypeID    INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  empType      VARCHAR(100) NOT NULL UNIQUE
+  empType      VARCHAR(100) NOT NULL UNIQUE,
+  label        VARCHAR(100) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
 
 CREATE TABLE formupdatelogtypes (
@@ -97,27 +102,49 @@ CREATE TABLE formupdatelog (
 ) ENGINE=InnoDB;
 
 -- Lookup data the application needs in every environment.
-INSERT INTO application (systemName) VALUES
-  ('START'), ('GradTracker'), ('JTracker'), ('AMS'),
-  ('FacultyIntegration'), ('SASNWebsite'), ('Kronos');
+-- The name columns are stable codes used by the code and seed data; label is what users see.
+-- Codes and labels follow the original SASN IT Access Request Form.
+INSERT INTO application (systemName, label) VALUES
+  ('START', 'START(EMS)'), ('GradTracker', 'GradTracker'), ('JTracker', 'Junior Tracker'), ('AMS', 'AMS(PTL)'),
+  ('FacultyIntegration', 'Faculty Integration'), ('SASNWebsite', 'SASN Website'), ('Kronos', 'Kronos');
 
-INSERT INTO roles (systemID, roleName)
-SELECT a.systemID, r.roleName FROM (
-  SELECT 'START' AS sys, 'admin' AS roleName
-  UNION ALL SELECT 'START', 'viewer'
-  UNION ALL SELECT 'GradTracker', 'gt_certifier'
-  UNION ALL SELECT 'GradTracker', 'gt_viewer'
-  UNION ALL SELECT 'JTracker', 'jt_admin'
-  UNION ALL SELECT 'JTracker', 'jt_viewer'
-  UNION ALL SELECT 'AMS', 'ams_admin'
-  UNION ALL SELECT 'AMS', 'ams_viewer'
-  UNION ALL SELECT 'FacultyIntegration', 'fi_editor'
-  UNION ALL SELECT 'SASNWebsite', 'web_editor'
-  UNION ALL SELECT 'Kronos', 'timekeeper'
-) r JOIN application a ON a.systemName = r.sys;
+INSERT INTO roles (systemID, roleName, label)
+SELECT a.systemID, r.roleName, r.label FROM (
+  SELECT 1 AS pos, 'admin' AS roleName, 'Admin' AS label
+  UNION ALL SELECT 2, 'supervisor',    'Supervisor'
+  UNION ALL SELECT 3, 'advisor',       'Student Advisor'
+  UNION ALL SELECT 4, 'informational', 'Informational'
+) r JOIN application a ON a.systemName = 'START'
+ORDER BY r.pos;
 
-INSERT INTO requesttypes (requestName) VALUES ('newEmp'), ('changeRole'), ('removeAccess');
-INSERT INTO employeetypes (empType) VALUES ('staff'), ('faculty'), ('student worker');
+-- Every other system offers the same eight roles, with a per-system code prefix.
+INSERT INTO roles (systemID, roleName, label)
+SELECT a.systemID, CONCAT(p.prefix, '_', r.code), r.label FROM (
+  SELECT 'GradTracker' AS sys, 'gt' AS prefix
+  UNION ALL SELECT 'JTracker',           'jt'
+  UNION ALL SELECT 'AMS',                'ams'
+  UNION ALL SELECT 'FacultyIntegration', 'fi'
+  UNION ALL SELECT 'SASNWebsite',        'sasn'
+  UNION ALL SELECT 'Kronos',             'kr'
+) p
+JOIN application a ON a.systemName = p.sys
+CROSS JOIN (
+  SELECT 1 AS pos, 'supervisor' AS code, 'Supervisor' AS label
+  UNION ALL SELECT 2, 'certifier',     'Certifier'
+  UNION ALL SELECT 3, 'deptCertifier', 'Department Certifier'
+  UNION ALL SELECT 4, 'registrar',     'Registrar'
+  UNION ALL SELECT 5, 'informational', 'Informational'
+  UNION ALL SELECT 6, 'UTEP',          'Urban Teaching and Educational (UTEP)'
+  UNION ALL SELECT 7, 'BAMA',          'BA/MA'
+  UNION ALL SELECT 8, 'honors',        'Honors College'
+) r
+ORDER BY a.systemID, r.pos;
+
+INSERT INTO requesttypes (requestName, label) VALUES
+  ('newEmp', 'New Employee'), ('samePosNewRole', 'Same Position-New Role'),
+  ('transfer', 'Transferring'), ('removeAllAccess', 'Remove All Access');
+INSERT INTO employeetypes (empType, label) VALUES
+  ('staff', 'Staff'), ('faculty', 'Faculty'), ('student_worker', 'Student Worker');
 INSERT INTO formupdatelogtypes (actionName) VALUES ('submit'), ('approve'), ('deny');
 INSERT INTO schoolanddepartment (schoolName, deptName) VALUES
   ('SASN', 'AAAS'), ('SASN', 'Biology'), ('SASN', 'History'), ('SASN', 'Computer Science');

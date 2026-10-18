@@ -1,0 +1,2 @@
+ALTER TABLE forms
+ADD COLUMN action BOOLEAN;
