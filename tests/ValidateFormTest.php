@@ -24,6 +24,7 @@ final class ValidateFormTest extends TestCase
             'firstName' => 'Casey', 'lastName' => 'Newhire', 'netid' => 'cn5001', 'email' => 'cn@example.edu',
             'effDate' => '2030-01-15', 'departmentId' => '1', 'supervisorId' => '3',
             'requestTypeId' => '1', 'employeeTypeId' => '1', 'roleIds' => ['7'], 'justification' => 'Needs access',
+            'approvalName' => 'Alex Submitter', 'approvalSignature' => 'Alex Submitter', 'approvalDate' => '2030-01-02',
         ];
     }
 
@@ -38,6 +39,14 @@ final class ValidateFormTest extends TestCase
         $this->assertArrayHasKey('firstName', $errors);
         $this->assertArrayHasKey('lastName', $errors);
         $this->assertArrayHasKey('justification', $errors);
+    }
+
+    public function testApprovalSectionRequiredToSubmit(): void
+    {
+        $errors = validate_form($this->valid(['approvalName' => '', 'approvalSignature' => ' ', 'approvalDate' => '']), $this->options);
+        $this->assertArrayHasKey('approvalName', $errors);
+        $this->assertArrayHasKey('approvalSignature', $errors);
+        $this->assertArrayHasKey('approvalDate', $errors);
     }
 
     public function testBadNetidEmailAndDate(): void

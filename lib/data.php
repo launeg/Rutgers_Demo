@@ -50,7 +50,11 @@ function form_options(mysqli $conn): array
 function validate_form(array $in, array $options): array
 {
     $errors = [];
-    foreach (['firstName' => 'First name', 'lastName' => 'Last name', 'justification' => 'Justification'] as $field => $label) {
+    $required = [
+        'firstName' => 'First name', 'lastName' => 'Last name', 'justification' => 'Justification',
+        'approvalName' => 'Name', 'approvalSignature' => 'Signature',
+    ];
+    foreach ($required as $field => $label) {
         if (trim($in[$field] ?? '') === '') {
             $errors[$field] = "$label is required.";
         }
@@ -61,9 +65,11 @@ function validate_form(array $in, array $options): array
     if (!filter_var($in['email'] ?? '', FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = 'Enter a valid email.';
     }
-    $date = DateTime::createFromFormat('Y-m-d', $in['effDate'] ?? '');
-    if (!$date || $date->format('Y-m-d') !== $in['effDate']) {
-        $errors['effDate'] = 'Enter a valid effective date.';
+    foreach (['effDate' => 'Enter a valid effective date.', 'approvalDate' => 'Enter a valid date.'] as $field => $message) {
+        $date = DateTime::createFromFormat('Y-m-d', $in[$field] ?? '');
+        if (!$date || $date->format('Y-m-d') !== $in[$field]) {
+            $errors[$field] = $message;
+        }
     }
 
     $choices = ['departmentId' => 'departments', 'requestTypeId' => 'requestTypes', 'employeeTypeId' => 'employeeTypes', 'supervisorId' => 'supervisors'];

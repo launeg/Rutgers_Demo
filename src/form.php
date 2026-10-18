@@ -103,5 +103,15 @@ echo '</div><hr>';
 echo '<div class="access-information"><h3>JUSTIFICATION FOR ACCESS REQUESTED</h3>'
     . '<textarea name="justification" rows="4">' . h($in['justification'] ?? '') . '</textarea>';
 error_for('justification', $errors);
+echo '</div><hr>';
+
+echo '<div class="approval-information"><h3>APPROVAL</h3><b>Supervisor:</b>'
+    . '<p>By submitting this form, I certify that the user requires access to data within the above system(s) to perform their job duties. '
+    . 'I understand that it is my obligation to ensure that adequate training is provided to the user in compliance with state and federal laws, '
+    . 'and University policies governing access to information contained in employee, applicant, and student records. '
+    . 'I also certify that the person requesting access has read the "School of Arts and Sciences Confidentiality Agreement".</p>';
+field('approvalName', 'Name', $in, $errors);
+field('approvalSignature', 'Signature', $in, $errors);
+field('approvalDate', 'Date', $in, $errors, 'date');
 echo '</div><br><button type="submit" class="submit-button">Submit</button></form>';
 page_footer();
