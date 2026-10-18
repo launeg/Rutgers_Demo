@@ -38,6 +38,7 @@ function form_options(mysqli $conn): array
         'requestTypes'  => query_all($conn, 'SELECT requestID AS id, label FROM requesttypes ORDER BY requestID'),
         'employeeTypes' => query_all($conn, 'SELECT empTypeID AS id, label FROM employeetypes ORDER BY empTypeID'),
         'supervisors'   => query_all($conn, 'SELECT userID AS id, CONCAT(firstName, " ", lastName) AS label FROM users WHERE userRole = "supervisor" ORDER BY lastName'),
+        'systems'       => query_all($conn, 'SELECT systemID AS id, label FROM application ORDER BY systemID'),
         'roles'         => query_all($conn, 'SELECT r.roleID AS id, a.label AS systemLabel, r.label FROM roles r JOIN application a ON a.systemID = r.systemID ORDER BY a.systemID, r.roleID'),
     ];
 }
@@ -150,9 +151,57 @@ const FORM_LIST_SQL = 'SELECT f.formID, f.entryDate, f.effDate, f.status, f.user
     LEFT JOIN roles r ON r.roleID = fr.roleID
     LEFT JOIN application a ON a.systemID = r.systemID';
 
-function forms_by_submitter(mysqli $conn, int $userId): array
+/**
+ * Extra WHERE conditions for the request list, built from search/filter input.
+ * Empty or unknown values are ignored. System and role use EXISTS so the roles
+ * column still lists every role on a matching request.
+ *
+ * @return array{0: string, 1: string, 2: array} SQL to append, bind types, bind values
+ */
+function form_filter_sql(array $filters): array
 {
-    return query_all($conn, FORM_LIST_SQL . ' WHERE f.submitterUserID = ? GROUP BY f.formID ORDER BY f.entryDate DESC', 'i', [$userId]);
+    $sql = '';
+    $types = '';
+    $params = [];
+
+    $search = trim((string) ($filters['q'] ?? ''));
+    if ($search !== '') {
+        $like = '%' . addcslashes($search, '%_\\') . '%';
+        $sql .= ' AND (CONCAT(f.userFirstName, " ", f.userLastName) LIKE ? OR f.userNetID LIKE ? OR f.userEmail LIKE ?)';
+        $types .= 'sss';
+        array_push($params, $like, $like, $like);
+    }
+    if (in_array($filters['status'] ?? '', FORM_STATUSES, true)) {
+        $sql .= ' AND f.status = ?';
+        $types .= 's';
+        $params[] = $filters['status'];
+    }
+
+    $idFilters = [
+        'department' => ' AND f.schoolDeptID = ?',
+        'system'     => ' AND EXISTS (SELECT 1 FROM form_roles xfr JOIN roles xr ON xr.roleID = xfr.roleID WHERE xfr.formID = f.formID AND xr.systemID = ?)',
+        'role'       => ' AND EXISTS (SELECT 1 FROM form_roles xfr WHERE xfr.formID = f.formID AND xfr.roleID = ?)',
+    ];
+    foreach ($idFilters as $key => $condition) {
+        $id = filter_var($filters[$key] ?? '', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+        if ($id !== false) {
+            $sql .= $condition;
+            $types .= 'i';
+            $params[] = $id;
+        }
+    }
+    return [$sql, $types, $params];
+}
+
+function forms_by_submitter(mysqli $conn, int $userId, array $filters = []): array
+{
+    [$where, $types, $params] = form_filter_sql($filters);
+    return query_all(
+        $conn,
+        FORM_LIST_SQL . ' WHERE f.submitterUserID = ?' . $where . ' GROUP BY f.formID ORDER BY f.entryDate DESC',
+        'i' . $types,
+        [$userId, ...$params]
+    );
 }
 
 /** Status a user with this role acts on, or null if the role has no approval queue. */
